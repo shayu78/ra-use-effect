@@ -1,3 +1,4 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/1tf9fvjgrhvwislt?svg=true)](https://ci.appveyor.com/project/shayu78/ra-use-effect)
 Список и детали
 ===
 
