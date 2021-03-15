@@ -6,7 +6,7 @@ import cn from 'classnames';
 
 export default function UsersList(props) {
   const { onClickItem } = props;
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [selectedItem, setSelectedItem] = useState({});
@@ -15,7 +15,7 @@ export default function UsersList(props) {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
-      setData([]);
+      setData(null);
       try {
         const response = await fetch(`${process.env.REACT_APP_SERVER_URL}users.json`);
         if (!response.ok) throw new Error(response.statusText);
@@ -40,7 +40,7 @@ export default function UsersList(props) {
     <React.Fragment>
       {loading && <span className="loading">Загрузка данных, подождите...</span>}
       {error && <span className="error">{error}</span>}
-      {data.length !== 0 && <List className='list__items' data={data}>
+      {data && data.length !== 0 && <List className='list__items' data={data}>
         {data =>
           data.map((item) =>
             <ListItem key={item.id} className={cn({ 'list__item': true, 'active': item.id === selectedItem.id })}
